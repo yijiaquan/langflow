@@ -119,7 +119,6 @@ const config = {
         theme: {
           customCss: [
             require.resolve("./css/custom.css"),
-            require.resolve("./css/docu-notion-styles.css"),
             require.resolve(
               "./css/gifplayer.css"
             ),
