@@ -5,6 +5,7 @@ slug: /api-reference-api-examples
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ShellCodeBlock from '@site/src/components/ShellCodeBlock';
 
 This page provides examples and practices for managing Langflow using the Langflow API.
 
@@ -2379,3 +2380,9 @@ curl -X GET \
 
   </TabItem>
 </Tabs>
+
+
+<ShellCodeBlock
+  filePath="/scripts/code.sh"
+  className="my-4"
+/>
