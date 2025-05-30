@@ -3,7 +3,6 @@
 
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-const { remarkCodeHike } = require("@code-hike/mdx");
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -79,27 +78,31 @@ const config = {
 
   presets: [
     [
-      "docusaurus-preset-openapi",
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        api: {
-          path: "openapi.json", // Path to your OpenAPI file
-          routeBasePath: "/api", // The base URL for your API docs
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: './openapi.json', // Path to your local OpenAPI file
+            route: '/api/', // The base URL for your API docs
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          customCss: [
+            require.resolve("./css/custom.css"),
+          ],
         },
+      },
+    ],
+    [
+      "@docusaurus/preset-classic",
+      /* @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
           routeBasePath: "/", // Serve the docs at the site's root
           sidebarPath: require.resolve("./sidebars.js"), // Use sidebars.js file
           sidebarCollapsed: true,
-          beforeDefaultRemarkPlugins: [
-            [
-              remarkCodeHike,
-              {
-                theme: "github-dark",
-                showCopyButton: true,
-                lineNumbers: true,
-              },
-            ],
-          ],
         },
         sitemap: {
           // https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-sitemap
@@ -115,12 +118,10 @@ const config = {
         blog: false,
         theme: {
           customCss: [
-            require.resolve("@code-hike/mdx/styles.css"),
             require.resolve("./css/custom.css"),
             require.resolve("./css/docu-notion-styles.css"),
             require.resolve(
               "./css/gifplayer.css"
-              //"./node_modules/react-gif-player/dist/gifplayer.css" // this gave a big red compile warning which is seaming unrelated "  Replace Autoprefixer browsers option to Browserslist config..."
             ),
           ],
         },
