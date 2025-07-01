@@ -346,7 +346,10 @@
                 "group_outputs": false,
                 "method": "build_model",
                 "name": "model_output",
-                "required_inputs": [],
+                "required_inputs": [
+                  "aws_access_key_id",
+                  "aws_secret_access_key"
+                ],
                 "selected": "LanguageModel",
                 "tool_mode": true,
                 "types": [
@@ -687,7 +690,10 @@
                 "group_outputs": false,
                 "method": "build_model",
                 "name": "model_output",
-                "required_inputs": [],
+                "required_inputs": [
+                  "aws_access_key_id",
+                  "aws_secret_access_key"
+                ],
                 "selected": "LanguageModel",
                 "tool_mode": true,
                 "types": [
